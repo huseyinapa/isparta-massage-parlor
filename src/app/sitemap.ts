@@ -26,23 +26,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
-    {
-      url: "https://ispartagulsehrimasaj.com/galeri",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-    {
-      url: "https://ispartagulsehrimasaj.com/gizlilik-politikasi",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: "https://ispartagulsehrimasaj.com/kullanim-kosullari",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
+    // {
+    //   url: "https://ispartagulsehrimasaj.com/galeri",
+    //   lastModified: new Date(),
+    //   changeFrequency: "weekly",
+    //   priority: 0.6,
+    // },
+    // {
+    //   url: "https://ispartagulsehrimasaj.com/gizlilik-politikasi",
+    //   lastModified: new Date(),
+    //   changeFrequency: "yearly",
+    //   priority: 0.3,
+    // },
+    // {
+    //   url: "https://ispartagulsehrimasaj.com/kullanim-kosullari",
+    //   lastModified: new Date(),
+    //   changeFrequency: "yearly",
+    //   priority: 0.3,
+    // },
   ];
 }

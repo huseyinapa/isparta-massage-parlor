@@ -45,7 +45,7 @@ export default function Home() {
       <div className="mx-auto">
         <HomeFeature />
         <MassageServices />
-        <ReviewsFeature />
+        {/* <ReviewsFeature /> */}
         <FAQFeatures />
       </div>
     </>

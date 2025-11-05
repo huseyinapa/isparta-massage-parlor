@@ -91,7 +91,7 @@ export default function ReviewsFeature() {
           </div>
         </div>
 
-        {reviews.length === 0 ? (
+        {!reviews || reviews.length === 0 ? (
           <Icon
             icon="line-md:loading-twotone-loop"
             className="w-40 h-40 text-blue-500"
