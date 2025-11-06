@@ -193,9 +193,15 @@ const NavbarComponent = () => {
           >
             <div className="flex flex-col items-center justify-center gap-y-2 h-full bg-gray-900 rounded-b-xl">
               {navbarLinks()}
-              <Link
-                href="https://api.whatsapp.com/send/?phone=905302411232&text=Randevu%20almak%20istiyorum."
-                target="_blank"
+              <a
+                onClick={
+                  () => {
+                    // reportConversion fonksiyonunu dinamik import ile çağır
+                    import('@/lib/reportConversion').then(({ reportConversion }) => {
+                      reportConversion('https://api.whatsapp.com/send/?phone=905302411232&text=Randevu%20almak%20istiyorum.');
+                    });
+                  }
+                }
                 rel="noopener noreferrer"
                 className="flex justify-between items-center gap-3 text-white font-semibold py-2 px-4 mt-2 rounded hover:bg-gray-700 hover:text-green-500 transition-all duration-300 ease-linear"
               >
@@ -204,7 +210,7 @@ const NavbarComponent = () => {
                   className="w-6 h-6 inline-block"
                 />
                 <span>Randevu Al</span>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

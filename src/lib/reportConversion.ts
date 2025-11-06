@@ -47,16 +47,26 @@ export function reportConversion(url?: string) {
 
   // gtag fonksiyonu tanımlı ve bir fonksiyon ise:
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", "conversion", {
-      send_to: "AW-11516061259/73mkCJfnzfsZEMvMpPMq",
-      value: 1.0,
-      currency: "TRY",
-      event_callback: callback,
-    });
-    // Fallback: 500ms sonra callback'i tekrar çağır
-    setTimeout(callback, 500);
-  } else {
-    // gtag yoksa doğrudan telefon linkine gider
-    callback();
+    if (url?.includes("tel:")) {
+      window.gtag("event", "conversion", {
+        send_to: "AW-11516061259/73mkCJfnzfsZEMvMpPMq",
+        value: 1.0,
+        currency: "TRY",
+        event_callback: callback,
+      });
+      // Fallback: 500ms sonra callback'i tekrar çağır
+      setTimeout(callback, 500);
+      return;
+    } else if (url?.includes("api.whatsapp.com")) {
+      window.gtag("event", "conversion", {
+        send_to: "AW-11516061259/tpAXCMSGtLobEMvMpPMq",
+        event_callback: callback,
+      });
+      // Fallback: 500ms sonra callback'i tekrar çağır
+      setTimeout(callback, 500);
+    } else {
+      // gtag yoksa doğrudan telefon linkine gider
+      callback();
+    }
   }
 }
