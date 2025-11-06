@@ -1,11 +1,26 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import NavbarComponent from "@/app/_components/Navbar";
 import FooterComponent from "./_components/Footer";
 import { ToastContainer } from "react-toastify";
 import Script from "next/script";
 import SpeedDialButtonComponent from "./_components/SpeedDialButton";
+
+// GTM noscript bileşeni
+function GTMNoScript() {
+  return (
+    <noscript
+      dangerouslySetInnerHTML={{
+        __html: `
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PL27HK6T"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        `,
+      }}
+    />
+  );
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -93,7 +108,7 @@ export default function RootLayout({
         {/* Google Tag Manager: Script Kodu */}
         <Script
           id="gtm-base"
-          strategy="beforeInteractive" // veya "afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -106,19 +121,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased ${
-          NODE_ENV === "development" ? "debug-screens" : ""
-        }`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased ${NODE_ENV === "development" ? "debug-screens" : ""
+          }`}
       >
-        {/* Google Tag Manager: NoScript Fallback */}
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `
-              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PL27HK6T"
-              height="0" width="0" style="display:none;visibility:hidden"></iframe>
-            `,
-          }}
-        />
+        {/* Google Tag Manager: NoScript Fallback - body'nin en başında */}
+        <GTMNoScript />
 
         {/* Google Analytics 4 (GTAG.js) */}
         <Script
@@ -134,6 +141,7 @@ export default function RootLayout({
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-RLKC1XDH1K');
+              gtag('config', 'AW-11516061259');
             `,
           }}
         />
