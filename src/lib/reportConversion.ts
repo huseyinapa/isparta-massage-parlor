@@ -33,7 +33,7 @@ export function reportConversion(url?: string) {
   // gtag fonksiyonu tanımlı ve bir fonksiyon ise:
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
     window.gtag("event", "conversion", {
-      send_to: "AW-11516061259/vs5ACKnAi5saEMvMpPMq",
+      send_to: "AW-11516061259/73mkCJfnzfsZEMvMpPMq",
       value: 1.0,
       currency: "TRY",
       event_callback: callback,
