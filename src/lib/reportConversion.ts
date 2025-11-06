@@ -24,9 +24,13 @@ interface GtagEventParams {
 
 // 2) Dönüşüm fonksiyonu
 export function reportConversion(url?: string) {
+  let called = false;
   const callback = () => {
-    if (typeof url !== "undefined") {
-      window.location.href = url;
+    if (!called) {
+      called = true;
+      if (typeof url !== "undefined") {
+        window.location.href = url;
+      }
     }
   };
 
@@ -38,10 +42,10 @@ export function reportConversion(url?: string) {
       currency: "TRY",
       event_callback: callback,
     });
+    // Fallback: 500ms sonra callback'i tekrar çağır
+    setTimeout(callback, 500);
   } else {
     // gtag yoksa doğrudan telefon linkine gider
     callback();
   }
-
-  return false;
 }
