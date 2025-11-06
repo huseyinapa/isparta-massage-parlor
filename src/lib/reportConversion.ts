@@ -4,6 +4,7 @@
 declare global {
   interface Window {
     gtag?: GtagFunction;
+    dataLayer?: unknown[];
   }
 }
 
@@ -33,6 +34,16 @@ export function reportConversion(url?: string) {
       }
     }
   };
+
+  // GTM'e özel: dataLayer üzerinden custom event push (telefon araması)
+  if (typeof window !== "undefined") {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "phone_call",
+      value: 1.0,
+      currency: "TRY",
+    });
+  }
 
   // gtag fonksiyonu tanımlı ve bir fonksiyon ise:
   if (typeof window !== "undefined" && typeof window.gtag === "function") {

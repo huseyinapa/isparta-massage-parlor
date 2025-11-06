@@ -195,6 +195,8 @@ const NavbarComponent = () => {
               {navbarLinks()}
               <Link
                 href="https://api.whatsapp.com/send/?phone=905302411232&text=Randevu%20almak%20istiyorum."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex justify-between items-center gap-3 text-white font-semibold py-2 px-4 mt-2 rounded hover:bg-gray-700 hover:text-green-500 transition-all duration-300 ease-linear"
               >
                 <Icon
